@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.dkexception.feature.main"
+    namespace = "com.dkexception.core"
     compileSdk = 34
 
     defaultConfig {
@@ -15,9 +15,17 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+
+        val localProjectProperties = readProperties(rootProject.file("local.properties"))
+
+        val airVisualAPIKey: String =
+            (localProjectProperties["airVisualAPIKey"] as? String).orEmpty()
+
+        val airVisualAPIBaseURL: String =
+            (localProjectProperties["airVisualAPIBaseURL"] as? String).orEmpty()
+
+        buildConfigField("String", "airVisualAPIKey", "\"$airVisualAPIKey\"")
+        buildConfigField("String", "airVisualAPIBaseURL", "\"$airVisualAPIBaseURL\"")
     }
 
     buildTypes {
@@ -38,22 +46,14 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = Version.KOTLIN_COMPILER_EXT_VERSION
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
-
-    // Modules
-    implementation(project(Modules.CORE))
-    implementation(project(Modules.UI))
 
     // Core
     implementation(Core.coreKtx)
@@ -72,6 +72,13 @@ dependencies {
     implementation(DaggerHilt.hilt)
     implementation(DaggerHilt.hiltComposeNavigation)
     kapt(DaggerHilt.hiltAndroidCompiler)
+
+    // Retrofit
+    implementation(Retrofit.retrofit)
+    implementation(Retrofit.gson)
+    implementation(Retrofit.gsonConvertor)
+    implementation(Retrofit.okHttp)
+    implementation(Retrofit.okHttpLoggingInterceptor)
 
     // Testing
     testImplementation(TestImplementation.junit)

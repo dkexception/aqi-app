@@ -24,6 +24,8 @@ rootProject.name = "AQIApp"
 
 include(":app")
 
-include(":core:model")
+include(":core")
+
+include(":ui")
 
 include(":feature:main")

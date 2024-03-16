@@ -49,9 +49,9 @@ object Version {
 
 object Modules {
 
-    object Core {
-        const val MODEL = ":core:model"
-    }
+    const val CORE = ":core"
+
+    const val UI = ":ui"
 
     object Feature {
         const val MAIN = ":feature:main"

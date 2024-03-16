@@ -1,13 +1,10 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-
-    id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
 }
 
 android {
-    namespace = "com.dkexception.feature.main"
+    namespace = "com.dkexception.ui"
     compileSdk = 34
 
     defaultConfig {
@@ -15,9 +12,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-        vectorDrawables {
-            useSupportLibrary = true
-        }
     }
 
     buildTypes {
@@ -42,18 +36,9 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Version.KOTLIN_COMPILER_EXT_VERSION
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
-
-    // Modules
-    implementation(project(Modules.CORE))
-    implementation(project(Modules.UI))
 
     // Core
     implementation(Core.coreKtx)
@@ -67,11 +52,6 @@ dependencies {
     implementation(ComposeBOM.composeGraphics)
     implementation(ComposeBOM.composeUIPreview)
     implementation(ComposeBOM.composeMaterial3)
-
-    // Hilt
-    implementation(DaggerHilt.hilt)
-    implementation(DaggerHilt.hiltComposeNavigation)
-    kapt(DaggerHilt.hiltAndroidCompiler)
 
     // Testing
     testImplementation(TestImplementation.junit)
