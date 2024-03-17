@@ -1,6 +1,6 @@
 package com.dkexception.core.base
 
-import com.dkexception.core.BuildConfig
+import com.dkexception.aqiapp.core.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

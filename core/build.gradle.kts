@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.dkexception.core"
+    namespace = "com.dkexception.aqiapp.core"
     compileSdk = 34
 
     defaultConfig {
@@ -68,6 +68,9 @@ dependencies {
     implementation(ComposeBOM.composeUIPreview)
     implementation(ComposeBOM.composeMaterial3)
 
+    // Navigation
+    implementation(Navigation.navCompose)
+
     // Hilt
     implementation(DaggerHilt.hilt)
     implementation(DaggerHilt.hiltComposeNavigation)
@@ -79,6 +82,9 @@ dependencies {
     implementation(Retrofit.gsonConvertor)
     implementation(Retrofit.okHttp)
     implementation(Retrofit.okHttpLoggingInterceptor)
+
+    // Encrypted Shared Prefs
+    implementation(AndroidXSecurity.crypto)
 
     // Testing
     testImplementation(TestImplementation.junit)

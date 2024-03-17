@@ -37,8 +37,8 @@ object Version {
     // Coil
     const val COIL = "2.4.0"
 
-    //Data Store
-    const val DATA_STORE_VERSION = "1.0.0"
+    // AndroidX Security
+    const val SECURITY_CRYPTO = "1.0.0"
 
     // Testing
     const val TEST_RUNNER = "1.5.2"
@@ -55,6 +55,8 @@ object Modules {
 
     object Feature {
         const val MAIN = ":feature:main"
+        const val ONBOARDING = ":feature:onboarding"
+        const val AUTH = ":feature:auth"
     }
 }
 
@@ -111,6 +113,10 @@ object Retrofit {
     const val gson = "com.google.code.gson:gson:${Version.GSON}"
 }
 
+object AndroidXSecurity {
+    const val crypto = "androidx.security:security-crypto:${Version.SECURITY_CRYPTO}"
+}
+
 object Coil {
     const val coilKt = "io.coil-kt:coil:${Version.COIL}"
     const val coilCompose = "io.coil-kt:coil-compose:${Version.COIL}"
@@ -132,8 +138,4 @@ object TestImplementation {
 object AndroidTestImplementation {
     const val junit = "androidx.test.ext:junit:${Version.ANDROID_TEST_IMPL_RUNNER}"
     const val espresso = "androidx.test.espresso:espresso-core:${Version.ANDROID_TEST_ESPRESSO}"
-}
-
-object DataStore {
-    const val preference = "androidx.datastore:datastore-preferences:${Version.DATA_STORE_VERSION}"
 }

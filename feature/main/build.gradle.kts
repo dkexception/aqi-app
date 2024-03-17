@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.dkexception.feature.main"
+    namespace = "com.dkexception.aqiapp.feature.main"
     compileSdk = 34
 
     defaultConfig {
@@ -54,6 +54,7 @@ dependencies {
     // Modules
     implementation(project(Modules.CORE))
     implementation(project(Modules.UI))
+    implementation(project(Modules.Feature.ONBOARDING))
 
     // Core
     implementation(Core.coreKtx)

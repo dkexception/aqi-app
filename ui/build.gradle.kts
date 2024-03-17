@@ -52,6 +52,11 @@ dependencies {
     implementation(ComposeBOM.composeGraphics)
     implementation(ComposeBOM.composeUIPreview)
     implementation(ComposeBOM.composeMaterial3)
+    debugImplementation(ComposeBOM.debug_composeUiTooling)
+    debugImplementation(ComposeBOM.debug_composeUiTestManifest)
+
+    // Navigation
+    implementation(Navigation.navCompose)
 
     // Testing
     testImplementation(TestImplementation.junit)

@@ -1,6 +1,6 @@
 package com.dkexception.core.network.air_visual_api
 
-import com.dkexception.core.BuildConfig
+import com.dkexception.aqiapp.core.BuildConfig
 import com.dkexception.core.base.BaseAPIClient
 import com.dkexception.core.model.TaskResult
 import com.dkexception.core.network.air_visual_api.model.air_quality.AirQualityData

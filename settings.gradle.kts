@@ -29,3 +29,5 @@ include(":core")
 include(":ui")
 
 include(":feature:main")
+include(":feature:auth")
+include(":feature:onboarding")
