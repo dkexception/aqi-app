@@ -1,8 +1,6 @@
 package com.dkexception.aqiapp.feature.onboarding.guide
 
-import com.dkexception.core.base.mvi.BaseScreenEvent
-
-sealed class GuideEvent: BaseScreenEvent() {
+sealed class GuideEvent {
 
     data object OnSkipClicked : GuideEvent()
 

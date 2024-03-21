@@ -5,13 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.dkexception.aqiapp.feature.main.navigation.AppNavHost
-import com.dkexception.aqiapp.feature.main.ui.theme.AQIAppTheme
 import com.dkexception.core.navigation.NavigationManager
+import com.dkexception.ui.background.DXSurface
+import com.dkexception.ui.system.SetSystemBarColors
+import com.dkexception.ui.theme.DXTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -34,10 +35,10 @@ class MainActivity : ComponentActivity() {
             mainNavController = rememberNavController()
             navigationManager.setNavController(mainNavController)
 
-            AQIAppTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                ) {
+            SetSystemBarColors()
+
+            DXTheme {
+                DXSurface(Modifier.fillMaxSize()) {
                     AppNavHost(navController = mainNavController)
                 }
             }

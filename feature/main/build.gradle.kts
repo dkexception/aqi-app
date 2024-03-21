@@ -55,6 +55,7 @@ dependencies {
     implementation(project(Modules.CORE))
     implementation(project(Modules.UI))
     implementation(project(Modules.Feature.ONBOARDING))
+    implementation(project(Modules.Feature.AUTH))
 
     // Core
     implementation(Core.coreKtx)

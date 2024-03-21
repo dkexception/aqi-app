@@ -6,7 +6,7 @@ import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
 import androidx.navigation.NavBackStackEntry
 
-object NavTransitions {
+object DXNavTransitions {
 
     private const val TRANSITION_DURATION = 350
 

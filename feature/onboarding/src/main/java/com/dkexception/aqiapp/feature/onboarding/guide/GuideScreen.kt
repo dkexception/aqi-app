@@ -20,7 +20,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -47,6 +46,7 @@ import androidx.compose.ui.unit.dp
 import com.dkexception.aqiapp.feature.onboarding.R
 import com.dkexception.ui.buttons.DXPrimaryButton
 import com.dkexception.ui.buttons.DXTextButton
+import com.dkexception.ui.scaffold.DXScaffold
 import com.dkexception.ui.theme.DXColors
 import com.dkexception.ui.theme.DXPaddings
 import com.dkexception.ui.theme.headline1
@@ -64,7 +64,7 @@ fun GuideScreen(
 private fun GuideScreenContent(
     initialPage: Int = 0,
     onEvent: (GuideEvent) -> Unit
-) = Surface(color = DXColors.screenBackground.primary, modifier = Modifier.fillMaxSize()) {
+) = DXScaffold(modifier = Modifier.fillMaxSize()) {
 
     val context = LocalContext.current
     val localDensity = LocalDensity.current
@@ -99,7 +99,6 @@ private fun GuideScreenContent(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .safeDrawingPadding()
     ) {
 
         Canvas(

@@ -2,6 +2,7 @@ package com.dkexception.core.network.air_visual_api
 
 import com.dkexception.aqiapp.core.BuildConfig
 import com.dkexception.core.base.BaseAPIClient
+import com.dkexception.core.model.AirVisualAPIError
 import com.dkexception.core.model.TaskResult
 import com.dkexception.core.network.air_visual_api.model.air_quality.AirQualityData
 import com.dkexception.core.network.air_visual_api.model.cities.GetAllCitiesResponse
@@ -28,13 +29,14 @@ class AirVisualAPIClient @Inject constructor(
         BuildConfig.airVisualAPIKey
     }
 
-    suspend fun getAllCountries(): TaskResult<GetAllCountriesResponse> = apiWrapper {
-        apiService.getAllCountries(apiKey = apiKey)
-    }
+    suspend fun getAllCountries(): TaskResult<GetAllCountriesResponse, AirVisualAPIError> =
+        apiWrapper {
+            apiService.getAllCountries(apiKey = apiKey)
+        }
 
     suspend fun getAllStatesInCountry(
         country: String
-    ): TaskResult<GetAllStatesResponse> = apiWrapper {
+    ): TaskResult<GetAllStatesResponse, AirVisualAPIError> = apiWrapper {
         apiService.getAllStatesInCountry(
             apiKey = apiKey,
             country = country
@@ -44,7 +46,7 @@ class AirVisualAPIClient @Inject constructor(
     suspend fun getAllCitiesInState(
         country: String,
         state: String
-    ): TaskResult<GetAllCitiesResponse> = apiWrapper {
+    ): TaskResult<GetAllCitiesResponse, AirVisualAPIError> = apiWrapper {
         apiService.getAllCitiesInState(
             apiKey = apiKey,
             country = country,
@@ -54,7 +56,7 @@ class AirVisualAPIClient @Inject constructor(
 
     suspend fun getAirQualityByIPLocation(
         targetIPAddress: String? = null
-    ): TaskResult<AirQualityData> = apiWrapper {
+    ): TaskResult<AirQualityData, AirVisualAPIError> = apiWrapper {
         apiService.getAirQualityByIPLocation(
             apiKey = apiKey,
             targetIPAddress = targetIPAddress
@@ -64,7 +66,7 @@ class AirVisualAPIClient @Inject constructor(
     suspend fun getAirQualityByLocationCoordinates(
         latitude: Double,
         longitude: Double
-    ): TaskResult<AirQualityData> = apiWrapper {
+    ): TaskResult<AirQualityData, AirVisualAPIError> = apiWrapper {
         apiService.getAirQualityByLocationCoordinates(
             apiKey = apiKey,
             latitude = latitude,
@@ -76,7 +78,7 @@ class AirVisualAPIClient @Inject constructor(
         country: String,
         state: String,
         city: String
-    ): TaskResult<AirQualityData> = apiWrapper {
+    ): TaskResult<AirQualityData, AirVisualAPIError> = apiWrapper {
         apiService.getAirQualityByCity(
             apiKey = apiKey,
             country = country,

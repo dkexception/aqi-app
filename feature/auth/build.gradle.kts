@@ -59,6 +59,11 @@ dependencies {
     implementation(ComposeBOM.composeGraphics)
     implementation(ComposeBOM.composeUIPreview)
     implementation(ComposeBOM.composeMaterial3)
+    debugImplementation(ComposeBOM.debug_composeUiTooling)
+    debugImplementation(ComposeBOM.debug_composeUiTestManifest)
+
+    // Lifecycle
+    implementation(Lifecycle.lifecycleRuntimeCompose)
 
     // Hilt
     implementation(DaggerHilt.hilt)

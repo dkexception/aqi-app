@@ -14,6 +14,8 @@ object NavRoute {
     object AUTH {
 
         const val ROOT = "auth"
+
+        const val LOGIN = "login"
     }
 
     object DASHBOARD {

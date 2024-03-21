@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
-abstract class BaseViewModel<Event : BaseScreenEvent, State : BaseScreenState> : ViewModel() {
+abstract class BaseViewModel<Event, State> : ViewModel() {
 
     @Inject
     lateinit var navigationManager: NavigationManager

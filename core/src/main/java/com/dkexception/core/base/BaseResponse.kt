@@ -1,10 +1,8 @@
 package com.dkexception.core.base
 
 import androidx.annotation.Keep
-import com.dkexception.core.model.AQIAppException
+import com.dkexception.core.model.AirVisualAPIError
 import com.dkexception.core.model.TaskResult
-import com.dkexception.core.model.UIText
-import com.dkexception.core.model.toUIText
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import retrofit2.HttpException
@@ -30,16 +28,16 @@ data class BaseAPIErrorResponse(
     val errorData: BaseAPIError? = null
 ) {
 
-    fun <T> toErrorResult(httpStatusCode: Int): TaskResult<T> = when (httpStatusCode) {
+    fun <D> toErrorResult(
+        httpStatusCode: Int
+    ): TaskResult.Error<D, AirVisualAPIError> = when (httpStatusCode) {
 
         // Too many requests
-        429 -> TaskResult.Exception(AQIAppException.TooManyRequestsException)
+        429 -> TaskResult.Error(AirVisualAPIError.TooManyRequestsError)
 
         // Incorrect or exhausted API key
-        HttpURLConnection.HTTP_FORBIDDEN -> TaskResult.Exception(
-            AQIAppException.APIKeyException(
-                false
-            )
+        HttpURLConnection.HTTP_FORBIDDEN -> TaskResult.Error(
+            AirVisualAPIError.APIKeyError
         )
 
         // Bad request
@@ -50,35 +48,31 @@ data class BaseAPIErrorResponse(
             when {
                 errorMessage.contains("incorrect_api_key", true) -> {
 
-                    TaskResult.Exception(AQIAppException.APIKeyException(false))
+                    TaskResult.Error(AirVisualAPIError.APIKeyError)
 
                 }
 
                 errorMessage.contains("permission_denied", true) -> {
 
-                    TaskResult.Exception(AQIAppException.FeatureNotAvailableException)
+                    TaskResult.Error(AirVisualAPIError.FeatureNotAvailableError)
 
                 }
 
                 errorMessage.contains("city_not_found", true) -> {
 
-                    TaskResult.Exception(AQIAppException.PlaceNotFoundException)
+                    TaskResult.Error(AirVisualAPIError.PlaceNotFoundError)
 
                 }
 
                 else -> {
 
-                    TaskResult.Exception(AQIAppException.GenericException(null))
+                    TaskResult.Error(AirVisualAPIError.Unknown)
                 }
             }
         }
 
         // Generic failure
-        else -> TaskResult.Error(
-            data = null,
-            message = errorData?.message?.let(String::toUIText) ?: UIText.DEFAULT_ERROR_TEXT,
-            httpStatusCode = httpStatusCode
-        )
+        else -> TaskResult.Error(AirVisualAPIError.Unknown)
     }
 
     companion object {

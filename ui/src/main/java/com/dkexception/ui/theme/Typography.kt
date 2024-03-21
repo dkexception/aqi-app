@@ -15,7 +15,7 @@ fun headline1() = TextStyle(
 fun regular() = TextStyle(
     fontFamily = FontFamily.Default,
     fontWeight = FontWeight.Normal,
-    fontSize = 14.sp,
+    fontSize = 16.sp,
     lineHeight = 22.sp
 )
 
