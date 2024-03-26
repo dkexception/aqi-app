@@ -1,8 +1,14 @@
 plugins {
 
-    id("com.android.application") version ("8.3.0") apply (false)
-    id("com.android.library") version ("8.3.0") apply (false)
-    id("org.jetbrains.kotlin.android") version ("1.9.0") apply (false)
+    // Android
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.android.test) apply false
 
-    id("com.google.dagger.hilt.android") version ("2.50") apply (false)
+    // Kotlin
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.ksp) apply false
+
+    // HILT
+    alias(libs.plugins.hilt) apply false
 }

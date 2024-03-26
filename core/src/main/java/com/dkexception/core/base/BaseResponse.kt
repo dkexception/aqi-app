@@ -66,13 +66,13 @@ data class BaseAPIErrorResponse(
 
                 else -> {
 
-                    TaskResult.Error(AirVisualAPIError.Unknown)
+                    TaskResult.Error(AirVisualAPIError.UnknownError)
                 }
             }
         }
 
         // Generic failure
-        else -> TaskResult.Error(AirVisualAPIError.Unknown)
+        else -> TaskResult.Error(AirVisualAPIError.UnknownError)
     }
 
     companion object {

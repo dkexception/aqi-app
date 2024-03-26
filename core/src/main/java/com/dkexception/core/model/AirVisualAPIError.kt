@@ -8,7 +8,7 @@ enum class AirVisualAPIError : Error {
 
     CallLimitReachedError,
 
-    APIKeyExhausted,
+    APIKeyExhaustedError,
 
     APIKeyError,
 
@@ -22,5 +22,5 @@ enum class AirVisualAPIError : Error {
 
     InvalidBackendResponseError,
 
-    Unknown
+    UnknownError
 }

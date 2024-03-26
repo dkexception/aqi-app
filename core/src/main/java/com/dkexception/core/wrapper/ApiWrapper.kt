@@ -38,5 +38,5 @@ internal suspend fun <D> apiWrapper(
 } catch (e: Exception) {
 
     // Generic exceptions
-    TaskResult.Error(AirVisualAPIError.Unknown)
+    TaskResult.Error(AirVisualAPIError.UnknownError)
 }
