@@ -23,6 +23,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "AQIApp"
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 include(":app")
 
 include(":core")
@@ -32,3 +34,4 @@ include(":ui")
 include(":feature:main")
 include(":feature:auth")
 include(":feature:onboarding")
+include(":feature:more")

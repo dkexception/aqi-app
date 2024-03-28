@@ -24,6 +24,6 @@ fun NavGraphBuilder.onboardingNavGraph() = navigation(
     baseComposable(NavRoute.ONBOARDING.GUIDE) {
 
         val viewModel: GuideViewModel = hiltViewModel()
-        GuideScreen(viewModel::onEvent)
+        GuideScreen(onEvent = viewModel::onEvent)
     }
 }

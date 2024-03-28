@@ -1,8 +1,6 @@
 plugins {
 
     alias(libs.plugins.com.dkexception.android.application)
-
-    alias(libs.plugins.com.dkexception.hilt)
 }
 
 android {
@@ -31,5 +29,6 @@ android {
 dependencies {
 
     // Modules
+    api(projects.feature.main)
     implementation(project(":feature:main"))
 }

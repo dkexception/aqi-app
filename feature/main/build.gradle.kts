@@ -24,6 +24,7 @@ android {
 dependencies {
 
     // Modules
-    implementation(project(":feature:onboarding"))
-    implementation(project(":feature:auth"))
+    api(projects.feature.onboarding)
+    api(projects.feature.auth)
+    api(projects.feature.more)
 }

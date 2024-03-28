@@ -20,9 +20,3 @@ android {
         }
     }
 }
-
-dependencies {
-
-    // Lifecycle
-    implementation(libs.lifecycle.runtime.compose)
-}

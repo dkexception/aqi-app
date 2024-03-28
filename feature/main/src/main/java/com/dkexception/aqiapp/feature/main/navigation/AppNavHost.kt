@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.dkexception.aqiapp.feature.auth.navigation.authNavGraph
+import com.dkexception.aqiapp.feature.more.navigation.moreNavGraph
 import com.dkexception.aqiapp.feature.onboarding.navigation.onboardingNavGraph
 import com.dkexception.core.navigation.NavRoute
 import com.dkexception.ui.navigation.DXNavTransitions
@@ -26,4 +27,6 @@ fun AppNavHost(
     onboardingNavGraph()
 
     authNavGraph()
+
+    moreNavGraph()
 }

@@ -12,11 +12,20 @@ fun headline1() = TextStyle(
     lineHeight = 38.sp
 )
 
+fun headline2() = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontWeight = FontWeight.Bold,
+    fontSize = 20.sp,
+    lineHeight = 50.sp,
+    letterSpacing = .5.sp
+)
+
 fun regular() = TextStyle(
     fontFamily = FontFamily.Default,
     fontWeight = FontWeight.Normal,
     fontSize = 16.sp,
-    lineHeight = 22.sp
+    lineHeight = 22.sp,
+    letterSpacing = .3.sp
 )
 
 fun button() = TextStyle(

@@ -22,4 +22,11 @@ object NavRoute {
 
         const val ROOT = "dashboard"
     }
+
+    object MORE {
+
+        const val ROOT = "more"
+
+        const val LIST = "more_list"
+    }
 }

@@ -1,6 +1,6 @@
 package com.dkexception.aqiapp.feature.auth.login
 
-data class LoginState(
+data class LoginScreenState(
 
     val enteredEmailId: String = "",
 

@@ -13,3 +13,8 @@ object DXPaddings {
     val xxLarge: Dp = 48.dp
     val xxxLarge: Dp = 56.dp
 }
+
+object DXCardValues {
+    val cornerRadius: Dp = 8.dp
+    val elevation: Dp = 1.dp
+}

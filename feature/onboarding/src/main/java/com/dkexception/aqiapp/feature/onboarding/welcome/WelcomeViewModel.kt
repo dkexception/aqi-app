@@ -4,20 +4,18 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.navOptions
 import com.dkexception.core.DataStore
 import com.dkexception.core.base.mvi.BaseScreenEvent
-import com.dkexception.core.base.mvi.BaseScreenState
 import com.dkexception.core.base.mvi.BaseViewModel
 import com.dkexception.core.navigation.NavRoute
 import com.dkexception.core.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class WelcomeViewModel @Inject constructor(
     dataStore: DataStore
-) : BaseViewModel<BaseScreenEvent, BaseScreenState>() {
+) : BaseViewModel<BaseScreenEvent>() {
 
     private val isUserOnboarded: Boolean = dataStore.getBoolean(
         key = Constants.SP_KEY_ONBOARDING_DONE,
@@ -28,8 +26,6 @@ class WelcomeViewModel @Inject constructor(
         key = Constants.SP_KEY_USER_AUTHENTICATED,
         default = false
     )
-
-    override val mState: MutableStateFlow<BaseScreenState> = MutableStateFlow(BaseScreenState())
 
     init {
         navigateNext()

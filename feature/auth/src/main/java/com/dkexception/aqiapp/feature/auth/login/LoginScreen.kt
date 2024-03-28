@@ -24,13 +24,13 @@ import com.dkexception.ui.theme.regular
 
 @Composable
 fun LoginScreen(
-    state: LoginState,
+    state: LoginScreenState,
     onEvent: (LoginEvent) -> Unit
 ) = LoginScreenContent(state = state, onEvent = onEvent)
 
 @Composable
 private fun LoginScreenContent(
-    state: LoginState,
+    state: LoginScreenState,
     onEvent: (LoginEvent) -> Unit
 ) = DXScaffold(
     modifier = Modifier.fillMaxSize(),
@@ -96,13 +96,13 @@ private fun LoginScreenContent(
 @Preview
 @Composable
 private fun LoginScreenInitPreview() = LoginScreenContent(
-    state = LoginState()
+    state = LoginScreenState()
 ) {}
 
 @Preview
 @Composable
 private fun LoginScreenDataPreview() = LoginScreenContent(
-    state = LoginState(
+    state = LoginScreenState(
         enteredEmailId = "abc04@getnada.com",
         enteredPassword = "pass@word",
         isLoginButtonEnabled = true

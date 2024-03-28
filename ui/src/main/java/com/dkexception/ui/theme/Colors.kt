@@ -20,11 +20,10 @@ object DXColors {
     val darkScrim = android.graphics.Color.argb(0x80, 0x1b, 0x1b, 0x1b)
 
     val primary: Primary
-        @Composable @ReadOnlyComposable get() = if (isSystemInDarkTheme()) {
-            Primary.Dark
-        } else {
-            Primary.Light
-        }
+        @Composable @ReadOnlyComposable get() = Primary.Default
+
+    val accent: Accent
+        @Composable @ReadOnlyComposable get() = Accent.Default
 
     val text: Text
         @Composable @ReadOnlyComposable get() = if (isSystemInDarkTheme()) {
@@ -39,6 +38,13 @@ object DXColors {
         } else {
             ScreenBackground.Light
         }
+
+    val card: Card
+        @Composable @ReadOnlyComposable get() = if (isSystemInDarkTheme()) {
+            Card.Dark
+        } else {
+            Card.Light
+        }
 }
 
 sealed class Primary(
@@ -47,16 +53,23 @@ sealed class Primary(
     val dark: Color
 ) {
 
-    data object Light : Primary(
+    data object Default : Primary(
         default = Color(0xFF1882FF),
         light = Color(0xFFE3F2FF),
         dark = Color(0xFF245DD8)
     )
+}
 
-    data object Dark : Primary(
-        default = Color(0xFF1882FF),
-        light = Color(0xFFE3F2FF),
-        dark = Color(0xFF245DD8)
+sealed class Accent(
+    val default: Color,
+    val light: Color,
+    val dark: Color
+) {
+
+    data object Default : Accent(
+        default = Color(0xFF00CD85),
+        light = Color(0xFFBDEDD4),
+        dark = Color(0xFF00A056)
     )
 }
 
@@ -92,5 +105,24 @@ sealed class ScreenBackground(
     data object Dark : ScreenBackground(
         primary = Color(0xFF000000),
         secondary = Color(0XFF121212)
+    )
+}
+
+sealed class Card(
+    val white: Color,
+    val gray: Color,
+    val shadowColor: Color
+) {
+
+    data object Light : Card(
+        white = Color(0xFFFFFFFF),
+        gray = Color(0xFFF5F5F5),
+        shadowColor = Color(0xFFFFFFFF)
+    )
+
+    data object Dark : Card(
+        white = Color(0xFF262626),
+        gray = Color(0xFF121212),
+        shadowColor = Color(0xFF1C1C1C)
     )
 }
