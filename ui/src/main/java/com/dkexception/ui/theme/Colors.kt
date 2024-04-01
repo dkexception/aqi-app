@@ -45,6 +45,16 @@ object DXColors {
         } else {
             Card.Light
         }
+
+    val divider: Divider
+        @Composable @ReadOnlyComposable get() = Divider.Default
+
+    val textField: TextField
+        @Composable @ReadOnlyComposable get() = if (isSystemInDarkTheme()) {
+            TextField.Dark
+        } else {
+            TextField.Light
+        }
 }
 
 sealed class Primary(
@@ -124,5 +134,48 @@ sealed class Card(
         white = Color(0xFF262626),
         gray = Color(0xFF121212),
         shadowColor = Color(0xFF1C1C1C)
+    )
+}
+
+sealed class Divider(
+    val default: Color
+) {
+
+    data object Default : Divider(
+        default = Color(0xFFF3F4F6)
+    )
+}
+
+sealed class TextField(
+    val focusedText: Color,
+    val focusedBorder: Color,
+    val unfocusedBorder: Color,
+    val error: Color,
+    val container: Color,
+    val placeholder: Color,
+    val cursor: Color,
+    val selectionHandle: Color
+) {
+
+    data object Light : TextField(
+        focusedText = Color(0xFF1C1C1E),
+        focusedBorder = Primary.Default.default,
+        unfocusedBorder = Color(0xFFE4E4E4),
+        error = Color(0xFFF54251),
+        container = Color.White,
+        placeholder = Color(0xFF848485),
+        cursor = Primary.Default.default,
+        selectionHandle = Primary.Default.default
+    )
+
+    data object Dark : TextField(
+        focusedText = Color(0xFFF5F5F5),
+        focusedBorder = Primary.Default.default,
+        unfocusedBorder = Color(0xFFE4E4E4),
+        error = Color(0xFFD90000),
+        container = Color(0xFF262626),
+        placeholder = Color(0xFF848485),
+        cursor = Primary.Default.default,
+        selectionHandle = Primary.Default.default
     )
 }

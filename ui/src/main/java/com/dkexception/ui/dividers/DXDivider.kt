@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.dkexception.ui.theme.DXColors
 
 @Composable
 fun DXDivider(
@@ -15,7 +16,7 @@ fun DXDivider(
 ) = HorizontalDivider(
     modifier = modifier,
     thickness = 1.dp,
-    color = optionalDividerColor ?: Color(0xFFF3F4F6)
+    color = optionalDividerColor ?: DXColors.divider.default
 )
 
 @Preview

@@ -24,3 +24,19 @@ enum class AirVisualAPIError : Error {
 
     UnknownError
 }
+
+enum class PasswordValidationError : Error {
+
+    EMPTY,
+
+    TOO_SHORT,
+
+    TOO_SIMPLE
+}
+
+enum class EmailValidationError : Error {
+
+    EMPTY,
+
+    INCORRECT
+}

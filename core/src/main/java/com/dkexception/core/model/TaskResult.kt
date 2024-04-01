@@ -19,3 +19,13 @@ sealed interface TaskResult<out DATA, out ERROR : RootError> {
         val error: ERROR
     ) : TaskResult<DATA, ERROR>
 }
+
+val <D, E : RootError> TaskResult<D, E>.isSuccessful: Boolean
+    get() = this is TaskResult.Success
+
+val <D, E : RootError> TaskResult<D, E>.errorOrNull: E?
+    get() = if (this is TaskResult.Error) {
+        this.error
+    } else {
+        null
+    }

@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GuideViewModel @Inject constructor(
-    dataStore: DataStore
+    private val dataStore: DataStore
 ) : BaseViewModel<GuideEvent>() {
 
     private val isUserAuthenticated: Boolean = dataStore.getBoolean(
@@ -26,11 +26,21 @@ class GuideViewModel @Inject constructor(
         }
     }
 
-    private fun navigateNext() = navigationManager.navigate(
-        if (isUserAuthenticated) {
-            NavRoute.DASHBOARD.ROOT
-        } else {
-            NavRoute.AUTH.ROOT
-        }
-    )
+    private fun navigateNext() {
+
+        // Set user seen onboarding
+        dataStore.saveBoolean(
+            key = Constants.SP_KEY_ONBOARDING_DONE,
+            value = true
+        )
+
+        // And navigate further
+        navigationManager.navigate(
+            if (isUserAuthenticated) {
+                NavRoute.DASHBOARD.ROOT
+            } else {
+                NavRoute.AUTH.ROOT
+            }
+        )
+    }
 }

@@ -12,7 +12,9 @@ sealed class UIText {
 
     companion object {
 
-        val DEFAULT_ERROR_TEXT = UIText.DynamicString("Error")
+        val EMPTY = DynamicString("")
+
+        val DEFAULT_ERROR_TEXT = DynamicString("Error")
     }
 
     data class DynamicString(val value: String) : UIText()

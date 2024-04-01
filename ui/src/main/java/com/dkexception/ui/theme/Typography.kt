@@ -28,6 +28,22 @@ fun regular() = TextStyle(
     letterSpacing = .3.sp
 )
 
+fun textField() = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontWeight = FontWeight.SemiBold,
+    fontSize = 16.sp,
+    lineHeight = 40.sp,
+    letterSpacing = .5.sp
+)
+
+fun textFieldPlaceholder() = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontWeight = FontWeight.Normal,
+    fontSize = 16.sp,
+    lineHeight = 40.sp,
+    letterSpacing = .5.sp
+)
+
 fun button() = TextStyle(
     fontFamily = FontFamily.Default,
     fontWeight = FontWeight.SemiBold,
