@@ -21,6 +21,8 @@ object NavRoute {
     object DASHBOARD {
 
         const val ROOT = "dashboard"
+
+        const val HOME = "home"
     }
 
     object MORE {

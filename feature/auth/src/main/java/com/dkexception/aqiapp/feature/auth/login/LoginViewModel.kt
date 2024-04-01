@@ -86,7 +86,7 @@ class LoginViewModel @Inject constructor(
                 )
 
                 // And navigate to the dashboard
-                navigationManager.navigate(NavRoute.DASHBOARD.ROOT)
+                navigationManager.navigateClearingStack(NavRoute.DASHBOARD.ROOT)
             }
         }
     }

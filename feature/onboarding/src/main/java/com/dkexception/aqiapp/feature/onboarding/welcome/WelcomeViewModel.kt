@@ -1,7 +1,6 @@
 package com.dkexception.aqiapp.feature.onboarding.welcome
 
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.navOptions
 import com.dkexception.core.DataStore
 import com.dkexception.core.base.mvi.BaseScreenEvent
 import com.dkexception.core.base.mvi.BaseViewModel
@@ -49,13 +48,6 @@ class WelcomeViewModel @Inject constructor(
             }
         }
 
-        navigationManager.navigateWithNavOptions(
-            route = nextRoute,
-            navOptions = navOptions {
-                popUpTo(NavRoute.ONBOARDING.ROOT) {
-                    inclusive = true
-                }
-            }
-        )
+        navigationManager.navigateClearingStack(route = nextRoute)
     }
 }

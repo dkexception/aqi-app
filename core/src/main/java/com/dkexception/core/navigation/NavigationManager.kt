@@ -17,16 +17,26 @@ class NavigationManager @Inject constructor() {
     fun navigate(route: String) = try {
         navController?.navigate(route)
     } catch (e: IllegalArgumentException) {
-        // do nothing
+        handleIllegalNavigation()
     }
 
     fun navigateWithNavOptions(route: String, navOptions: NavOptions) = try {
         navController?.navigate(route, navOptions)
     } catch (e: IllegalArgumentException) {
-        // do nothing
+        handleIllegalNavigation()
+    }
+
+    fun navigateClearingStack(route: String) = try {
+        navController?.navigate(route) {
+            popUpTo(0)
+        }
+    } catch (e: IllegalArgumentException) {
+        handleIllegalNavigation()
     }
 
     fun goBack() {
         navController?.popBackStack()
     }
+
+    private fun handleIllegalNavigation() = Unit
 }

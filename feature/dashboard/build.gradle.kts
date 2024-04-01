@@ -4,7 +4,7 @@ plugins {
 
 android {
 
-    namespace = "com.dkexception.aqiapp.feature.main"
+    namespace = "com.dkexception.aqiapp.feature.dashboard"
 
     defaultConfig {
         consumerProguardFiles("consumer-rules.pro")
@@ -19,13 +19,4 @@ android {
             )
         }
     }
-}
-
-dependencies {
-
-    // Modules
-    api(projects.feature.onboarding)
-    api(projects.feature.auth)
-    api(projects.feature.dashboard)
-    api(projects.feature.more)
 }

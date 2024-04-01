@@ -35,12 +35,10 @@ class GuideViewModel @Inject constructor(
         )
 
         // And navigate further
-        navigationManager.navigate(
-            if (isUserAuthenticated) {
-                NavRoute.DASHBOARD.ROOT
-            } else {
-                NavRoute.AUTH.ROOT
-            }
-        )
+        if (isUserAuthenticated) {
+            navigationManager.navigateClearingStack(NavRoute.DASHBOARD.ROOT)
+        } else {
+            navigationManager.navigate(NavRoute.AUTH.ROOT)
+        }
     }
 }
