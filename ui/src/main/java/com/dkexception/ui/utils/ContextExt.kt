@@ -31,3 +31,5 @@ fun Context.getImageBitmapFromVector(
 
 fun Context.pxToDp(px: Int): Dp =
     Dp(TypedValueCompat.pxToDp(px.toFloat(), resources.displayMetrics))
+
+fun Context.getOSMSharedPrefs() = getSharedPreferences("aqi-app-osm", Context.MODE_PRIVATE)

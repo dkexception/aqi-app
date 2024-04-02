@@ -11,4 +11,7 @@ plugins {
 
     // HILT
     alias(libs.plugins.hilt) apply false
+
+    // Google map secrets plugin
+    alias(libs.plugins.google.map.secrets) apply false
 }

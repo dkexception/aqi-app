@@ -30,5 +30,6 @@ dependencies {
 
     // Modules
     api(projects.feature.main)
+    api(projects.ui)
     implementation(project(":feature:main"))
 }

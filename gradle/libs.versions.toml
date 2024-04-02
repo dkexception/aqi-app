@@ -20,7 +20,7 @@ ksp = "1.9.23-1.0.19"
 androidxNavigation = "2.7.7"
 
 # HILT
-hilt = "2.50"
+hilt = "2.51"
 hiltExt = "1.2.0"
 hiltComposeNav = "1.2.0"
 
@@ -44,6 +44,16 @@ okHttp = "4.12.0"
 
 # Security Crypto
 securityCrypto = "1.0.0"
+
+# Google maps
+googleMapsCompose = "4.3.3"
+googleMapsSecrets = "2.0.1"
+
+# Open Street Maps
+openStreetMap = "6.1.18"
+
+# Map my India
+mapMyIndia = "8.2.0"
 
 # Testing
 junit = "4.13.2"
@@ -108,6 +118,17 @@ okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-i
 # Security Crypto
 androidx-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "securityCrypto" }
 
+# Google maps
+google-maps-compose = { group = "com.google.maps.android", name = "maps-compose", version.ref = "googleMapsCompose" }
+google-maps-compose-utils = { group = "com.google.maps.android", name = "maps-compose-utils", version.ref = "googleMapsCompose" }
+google-maps-compose-widgets = { group = "com.google.maps.android", name = "maps-compose-widgets", version.ref = "googleMapsCompose" }
+
+# Open Street Maps
+openstreetmap = { group = "org.osmdroid", name = "osmdroid-android", version.ref = "openStreetMap" }
+
+# Map my India
+mapmyindia = { group = "com.mappls.sdk", name = "mappls-android-sdk", version.ref = "mapMyIndia" }
+
 # Testing
 junit-test = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
@@ -135,6 +156,9 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 # HILT
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+
+# Google maps secrets plugin
+google-map-secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "googleMapsSecrets" }
 
 # Custom
 com-dkexception-android-application = { id = "com.dkexception.android.application", version = "unspecified" }
