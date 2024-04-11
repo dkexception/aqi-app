@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MoreListViewModel @Inject constructor(
     mEnvironment: IEnvironment,
-    dataStore: DataStore
+    private val dataStore: DataStore
 ) : BaseViewModel<MoreListEvent>() {
 
     private val authUserData: AuthUserData? = try {
@@ -71,7 +71,8 @@ class MoreListViewModel @Inject constructor(
                     }
 
                     MoreListItem.LOGOUT -> {
-
+                        dataStore.nuke()
+                        navigationManager.navigateClearingStack(NavRoute.ONBOARDING.ROOT)
                     }
                 }
             }

@@ -16,6 +16,10 @@ class DataStore @Inject constructor(
         remove(key)
     }
 
+    fun nuke() = preferences.edit(true) {
+        clear()
+    }
+
     // Strings
     fun saveString(key: String, value: String) = preferences.edit {
         putString(key, value)

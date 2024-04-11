@@ -19,6 +19,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -98,7 +99,7 @@ class LoginViewModel @Inject constructor(
                     value = Gson().toJson(
                         AuthUserData(
                             name = _state.value.enteredName,
-                            emailId = _state.value.enteredEmailId
+                            emailId = _state.value.enteredEmailId.lowercase(Locale.getDefault())
                         )
                     )
                 )
