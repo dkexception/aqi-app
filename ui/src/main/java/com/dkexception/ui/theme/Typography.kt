@@ -20,12 +20,28 @@ fun headline2() = TextStyle(
     letterSpacing = .5.sp
 )
 
+fun light() = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontWeight = FontWeight.Light,
+    fontSize = 14.sp,
+    lineHeight = 20.sp,
+    letterSpacing = 0.sp
+)
+
 fun regular() = TextStyle(
     fontFamily = FontFamily.Default,
     fontWeight = FontWeight.Normal,
     fontSize = 16.sp,
     lineHeight = 22.sp,
     letterSpacing = .3.sp
+)
+
+fun large() = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontWeight = FontWeight.Medium,
+    fontSize = 16.sp,
+    lineHeight = 40.sp,
+    letterSpacing = .5.sp
 )
 
 fun textField() = TextStyle(

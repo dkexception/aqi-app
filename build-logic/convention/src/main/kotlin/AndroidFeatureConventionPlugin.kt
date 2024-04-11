@@ -15,12 +15,9 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             dependencies {
 
                 "api"(project(":ui"))
-                "implementation"(project(":core"))
+                "api"(project(":core"))
 
                 "implementation"(libs.findLibrary("lifecycle-runtime-compose").get())
-
-//                add("implementation", libs.findLibrary("androidx.lifecycle.runtimeCompose").get())
-//                add("implementation", libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
             }
         }
     }

@@ -32,8 +32,9 @@ include(":core")
 
 include(":ui")
 
-include(":feature:main")
 include(":feature:auth")
 include(":feature:onboarding")
 include(":feature:more")
-include(":feature:dashboard")
+include(":feature:aqidetails")
+include(":feature:databank")
+include(":feature:home")

@@ -24,12 +24,22 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
 
-    // Modules
-    api(projects.feature.main)
+    // Common
     api(projects.ui)
-    implementation(project(":feature:main"))
+
+    // Modules
+    api(projects.feature.onboarding)
+    api(projects.feature.auth)
+    api(projects.feature.home)
+    api(projects.feature.databank)
+    api(projects.feature.more)
+    api(projects.feature.aqidetails)
 }

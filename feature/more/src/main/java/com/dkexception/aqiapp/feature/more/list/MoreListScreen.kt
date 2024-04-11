@@ -199,7 +199,7 @@ private fun MoreListScreenContent(
                 Spacer(modifier = Modifier.height(DXPaddings.small))
 
                 Text(
-                    text = state.appVersion,
+                    text = "App Version ${state.appVersion}",
                     style = regular(),
                     color = DXColors.text.light
                 )

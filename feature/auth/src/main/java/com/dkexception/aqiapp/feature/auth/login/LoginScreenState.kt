@@ -4,6 +4,8 @@ import com.dkexception.core.model.UIText
 
 data class LoginScreenState(
 
+    val enteredName: String = "",
+
     val enteredEmailId: String = "",
     val emailIdError: UIText? = null,
 

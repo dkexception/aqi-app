@@ -7,9 +7,11 @@ import com.dkexception.core.model.EmailValidationError
 import com.dkexception.core.model.PasswordValidationError
 import com.dkexception.core.model.UIText
 import com.dkexception.core.model.errorOrNull
+import com.dkexception.core.model.profile.AuthUserData
 import com.dkexception.core.navigation.NavRoute
 import com.dkexception.core.utils.Constants
 import com.dkexception.core.validators.ISingleStringValidator
+import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -48,9 +50,11 @@ class LoginViewModel @Inject constructor(
                 else -> null
             }
 
-            val shouldEnableLoginButton: Boolean =
-                uiEmailError == null && uiPasswordError == null
-                        && it.enteredEmailId.isNotBlank() && it.enteredPassword.isNotBlank()
+            val shouldEnableLoginButton: Boolean = uiEmailError == null
+                    && uiPasswordError == null
+                    && it.enteredEmailId.isNotBlank()
+                    && it.enteredPassword.isNotBlank()
+                    && it.enteredName.isNotBlank()
 
             it.copy(
                 isLoginButtonEnabled = shouldEnableLoginButton,
@@ -61,6 +65,15 @@ class LoginViewModel @Inject constructor(
 
     override fun onEvent(event: LoginEvent) {
         when (event) {
+
+            is LoginEvent.OnNameChanged -> {
+                _state.update {
+                    it.copy(
+                        enteredName = event.newName
+                    )
+                }
+            }
+
             is LoginEvent.OnEmailChanged -> {
                 _state.update {
                     it.copy(
@@ -79,14 +92,19 @@ class LoginViewModel @Inject constructor(
 
             LoginEvent.OnLoginClicked -> {
 
-                // Set user logged in
-                dataStore.saveBoolean(
-                    key = Constants.SP_KEY_USER_AUTHENTICATED,
-                    value = true
+                // Set user logged in by saving the auth data
+                dataStore.saveString(
+                    key = Constants.SP_KEY_USER_DATA,
+                    value = Gson().toJson(
+                        AuthUserData(
+                            name = _state.value.enteredName,
+                            emailId = _state.value.enteredEmailId
+                        )
+                    )
                 )
 
                 // And navigate to the dashboard
-                navigationManager.navigateClearingStack(NavRoute.DASHBOARD.ROOT)
+                navigationManager.navigateClearingStack(NavRoute.HOME.ROOT)
             }
         }
     }

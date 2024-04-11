@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -85,6 +86,23 @@ private fun LoginScreenContent(
         )
 
         Spacer(modifier = Modifier.height(DXPaddings.large))
+
+        DXTextField(
+            isSingleLine = true,
+            text = state.enteredName,
+            modifier = Modifier.fillMaxWidth(),
+            optionalPlaceholderText = "Your name",
+            optionalLeadingIcon = UIDrawables.ic_profile,
+            optionalKeyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Next,
+                capitalization = KeyboardCapitalization.Words
+            ),
+        ) {
+            onEvent(LoginEvent.OnNameChanged(it))
+        }
+
+        Spacer(modifier = Modifier.height(DXPaddings.medium))
 
         DXTextField(
             isSingleLine = true,

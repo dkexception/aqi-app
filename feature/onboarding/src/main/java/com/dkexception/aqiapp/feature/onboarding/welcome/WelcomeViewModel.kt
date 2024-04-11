@@ -21,9 +21,8 @@ class WelcomeViewModel @Inject constructor(
         default = false
     )
 
-    private val isUserAuthenticated: Boolean = dataStore.getBoolean(
-        key = Constants.SP_KEY_USER_AUTHENTICATED,
-        default = false
+    private val isUserAuthenticated: Boolean = dataStore.containsKey(
+        key = Constants.SP_KEY_USER_DATA
     )
 
     init {
@@ -36,7 +35,7 @@ class WelcomeViewModel @Inject constructor(
 
         val nextRoute = when {
             isUserAuthenticated -> {
-                NavRoute.DASHBOARD.ROOT
+                NavRoute.HOME.ROOT
             }
 
             isUserOnboarded -> {

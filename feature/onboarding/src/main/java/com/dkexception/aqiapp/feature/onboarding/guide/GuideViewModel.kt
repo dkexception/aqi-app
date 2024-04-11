@@ -12,9 +12,8 @@ class GuideViewModel @Inject constructor(
     private val dataStore: DataStore
 ) : BaseViewModel<GuideEvent>() {
 
-    private val isUserAuthenticated: Boolean = dataStore.getBoolean(
-        key = Constants.SP_KEY_USER_AUTHENTICATED,
-        default = false
+    private val isUserAuthenticated: Boolean = dataStore.containsKey(
+        key = Constants.SP_KEY_USER_DATA
     )
 
     override fun onEvent(event: GuideEvent) {
@@ -36,7 +35,7 @@ class GuideViewModel @Inject constructor(
 
         // And navigate further
         if (isUserAuthenticated) {
-            navigationManager.navigateClearingStack(NavRoute.DASHBOARD.ROOT)
+            navigationManager.navigateClearingStack(NavRoute.HOME.ROOT)
         } else {
             navigationManager.navigate(NavRoute.AUTH.ROOT)
         }

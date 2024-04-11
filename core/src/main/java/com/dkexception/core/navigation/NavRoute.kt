@@ -18,11 +18,16 @@ object NavRoute {
         const val LOGIN = "login"
     }
 
-    object DASHBOARD {
+    object HOME {
 
-        const val ROOT = "dashboard"
+        const val ROOT = "home"
+    }
 
-        const val HOME = "home"
+    object DATABANK {
+
+        const val ROOT = "data_bank"
+
+        const val MAIN = "data_bank_main"
     }
 
     object MORE {
@@ -30,5 +35,12 @@ object NavRoute {
         const val ROOT = "more"
 
         const val LIST = "more_list"
+    }
+
+    object DETAILS {
+
+        const val AQI_DETAILS = "aqi_details"
+
+        const val AQI_SCALE = "aqi_scale"
     }
 }
