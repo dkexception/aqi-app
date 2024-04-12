@@ -55,6 +55,9 @@ object DXColors {
         } else {
             TextField.Light
         }
+
+    val aqiLevel: AQILevel
+        @Composable @ReadOnlyComposable get() = AQILevel.Default
 }
 
 sealed class Primary(
@@ -177,5 +180,26 @@ sealed class TextField(
         placeholder = Color(0xFF848485),
         cursor = Primary.Default.default,
         selectionHandle = Primary.Default.default
+    )
+}
+
+sealed class AQILevel(
+    val good: Color,
+    val moderate: Color,
+    val bad: Color,
+    val poor: Color,
+    val unhealthy: Color,
+    val hazardous: Color,
+    val unknown: Color,
+) {
+
+    data object Default : AQILevel(
+        good = Color(0xFFCCFFCC),
+        moderate = Color(0xFFE0F8E0),
+        bad = Color(0xFFFFDAB9),
+        poor = Color(0xFFFFA07A),
+        unhealthy = Color(0xFFE6E6FA),
+        hazardous = Color(0xFFFFCCCC),
+        unknown = Color.White
     )
 }

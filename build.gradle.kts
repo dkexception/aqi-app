@@ -14,4 +14,5 @@ plugins {
 
     // Google map secrets plugin
     alias(libs.plugins.google.map.secrets) apply false
+    alias(libs.plugins.jetbrainsKotlinAndroid) apply false
 }

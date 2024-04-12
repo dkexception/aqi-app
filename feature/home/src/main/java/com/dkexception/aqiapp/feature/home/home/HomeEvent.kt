@@ -1,3 +1,6 @@
 package com.dkexception.aqiapp.feature.home.home
 
-sealed class HomeEvent
+sealed class HomeEvent {
+
+    data object OnPulledToRefresh : HomeEvent()
+}

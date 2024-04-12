@@ -20,7 +20,7 @@ enum class AirVisualAPIError : Error {
 
     TooManyRequestsError,
 
-    InvalidBackendResponseError,
+    NullResponseError,
 
     UnknownError
 }

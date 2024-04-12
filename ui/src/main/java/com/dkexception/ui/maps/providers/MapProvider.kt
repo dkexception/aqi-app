@@ -10,6 +10,6 @@ enum class MapProvider {
 
     companion object {
 
-        fun getDefault() = MAP_MY_INDIA
+        fun getDefault() = GOOGLE
     }
 }

@@ -20,3 +20,8 @@ android {
         }
     }
 }
+
+dependencies {
+
+    api(projects.feature.aqisdk)
+}

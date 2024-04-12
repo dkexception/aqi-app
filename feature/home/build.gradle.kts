@@ -20,3 +20,11 @@ android {
         }
     }
 }
+
+dependencies {
+
+    api(projects.feature.aqisdk)
+    api(projects.feature.aqidetails)
+
+    implementation(libs.gson)
+}

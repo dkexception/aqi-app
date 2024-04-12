@@ -35,7 +35,11 @@ internal fun GoogleMapView(
         mutableStateOf(
             MapUiSettings(
                 mapToolbarEnabled = false,
-                myLocationButtonEnabled = true
+                myLocationButtonEnabled = true,
+                rotationGesturesEnabled = mapData.allowScrolling,
+                scrollGesturesEnabled = mapData.allowScrolling,
+                zoomControlsEnabled = mapData.allowScrolling,
+                zoomGesturesEnabled = mapData.allowScrolling
             )
         )
     }

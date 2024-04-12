@@ -19,7 +19,7 @@ fun NavGraphBuilder.homeNavGraph() = baseComposable(
 
     HomeScreen(
         state = state,
-        mMapView = viewModel.mMapView,
+        aqiIAQIDetailsCard = viewModel.aqiIAQIDetailsCard,
         onEvent = viewModel::onEvent
     )
 }

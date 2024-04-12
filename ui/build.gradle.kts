@@ -38,6 +38,12 @@ dependencies {
 
     // Map My India
     implementation(libs.mapmyindia)
+
+    // Coil
+    implementation(libs.coil.compose)
+
+    // Material 2 for Pull to refresh
+    implementation(libs.androidx.compose.material)
 }
 
 secrets {

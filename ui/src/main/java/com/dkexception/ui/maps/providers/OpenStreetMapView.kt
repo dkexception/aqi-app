@@ -36,6 +36,8 @@ internal fun OpenStreetMapView(
 
                 mapView.setMultiTouchControls(true)
                 mapView.getLocalVisibleRect(Rect())
+                mapView.isFlingEnabled = mapData.allowScrolling
+                mapView.isHorizontalScrollBarEnabled = mapData.allowScrolling
 
                 mapView.controller.setZoom(mapData.zoomLevel?.toDouble() ?: 0.0)
                 mapView.controller.setCenter(

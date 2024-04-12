@@ -28,6 +28,13 @@ fun light() = TextStyle(
     letterSpacing = 0.sp
 )
 
+fun medium() = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontWeight = FontWeight.Medium,
+    fontSize = 14.sp,
+    lineHeight = 20.sp
+)
+
 fun regular() = TextStyle(
     fontFamily = FontFamily.Default,
     fontWeight = FontWeight.Normal,

@@ -1,13 +1,5 @@
-import java.util.Properties
-
 plugins {
     alias(libs.plugins.com.dkexception.android.library)
-}
-
-fun readProperties(propertiesFile: File) = Properties().apply {
-    propertiesFile.inputStream().use { fis ->
-        load(fis)
-    }
 }
 
 android {
@@ -17,17 +9,6 @@ android {
     defaultConfig {
 
         consumerProguardFiles("consumer-rules.pro")
-
-        val localProjectProperties = readProperties(rootProject.file("local.properties"))
-
-        val airVisualAPIKey: String =
-            (localProjectProperties["airVisualAPIKey"] as? String).orEmpty()
-
-        val airVisualAPIBaseURL: String =
-            (localProjectProperties["airVisualAPIBaseURL"] as? String).orEmpty()
-
-        buildConfigField("String", "airVisualAPIKey", "\"$airVisualAPIKey\"")
-        buildConfigField("String", "airVisualAPIBaseURL", "\"$airVisualAPIBaseURL\"")
     }
 
     buildTypes {

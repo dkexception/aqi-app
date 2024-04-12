@@ -23,8 +23,8 @@ internal fun MapMyIndiaMapView(
 
     AndroidView(
         modifier = modifier,
-        factory = {
-            LayoutInflater.from(it).inflate(R.layout.mmi_map_view, null, false).apply {
+        factory = { context ->
+            LayoutInflater.from(context).inflate(R.layout.mmi_map_view, null, false).apply {
 
                 val mapView = findViewById<MapView>(R.id.mmi_map)
 
@@ -38,10 +38,14 @@ internal fun MapMyIndiaMapView(
 
                         override fun onMapReady(p0: MapplsMap) {
                             p0.cameraPosition = cameraPosition
+                            p0.uiSettings?.let {
+                                it.isScrollGesturesEnabled = mapData.allowScrolling
+                                it.isRotateGesturesEnabled = mapData.allowScrolling
+                            }
                         }
 
                         override fun onMapError(p0: Int, p1: String?) {
-                            Toast.makeText(it, "Map Error - $p1", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Map Error - $p1", Toast.LENGTH_SHORT).show()
                         }
                     }
                 )

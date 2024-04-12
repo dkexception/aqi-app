@@ -55,6 +55,9 @@ openStreetMap = "6.1.18"
 # Map my India
 mapMyIndia = "8.2.0"
 
+# Coil
+coilCompose = "2.2.2"
+
 # Testing
 junit = "4.13.2"
 kotlinxCoroutinesTest = "1.7.3"
@@ -63,6 +66,8 @@ androidxTestExt = "1.1.5"
 androidxTestRules = "1.5.0"
 androidxTestRunner = "1.5.2"
 androidxEspresso = "3.5.1"
+kotlinVersion = "1.9.0"
+junitVersion = "1.1.5"
 
 [libraries]
 
@@ -88,6 +93,7 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-compose-ui-testManifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 
+androidx-compose-material = { group = "androidx.compose.material", name = "material" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-compose-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
 
@@ -129,6 +135,9 @@ openstreetmap = { group = "org.osmdroid", name = "osmdroid-android", version.ref
 # Map my India
 mapmyindia = { group = "com.mappls.sdk", name = "mappls-android-sdk", version.ref = "mapMyIndia" }
 
+# Coil
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilCompose" }
+
 # Testing
 junit-test = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
@@ -142,6 +151,7 @@ android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", ver
 android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 
 [plugins]
 
@@ -165,3 +175,4 @@ com-dkexception-android-application = { id = "com.dkexception.android.applicatio
 com-dkexception-android-library = { id = "com.dkexception.android.library", version = "unspecified" }
 com-dkexception-android-feature = { id = "com.dkexception.android.feature", version = "unspecified" }
 com-dkexception-hilt = { id = "com.dkexception.hilt", version = "unspecified" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
