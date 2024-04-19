@@ -6,12 +6,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.dkexception.ui.maps.data.MapData
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapProperties
 import com.google.maps.android.compose.MapUiSettings
+import com.google.maps.android.compose.Marker
 import com.google.maps.android.compose.rememberCameraPositionState
+import com.google.maps.android.compose.rememberMarkerState
 
 @Composable
 internal fun GoogleMapView(
@@ -48,6 +51,15 @@ internal fun GoogleMapView(
         modifier = modifier,
         cameraPositionState = cameraPositionState,
         properties = mapProperties,
-        uiSettings = mapUiSettings
-    )
+        uiSettings = mapUiSettings,
+        onMapClick = {
+            mapData.onMapClicked()
+        }
+    ) {
+
+        Marker(
+            state = rememberMarkerState(position = positionToFocus),
+            icon = BitmapDescriptorFactory.defaultMarker(219.428f)
+        )
+    }
 }

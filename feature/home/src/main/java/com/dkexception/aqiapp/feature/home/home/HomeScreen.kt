@@ -85,7 +85,11 @@ private fun HomeScreenContent(
                         textAlign = TextAlign.Start
                     )
                     Spacer(modifier = Modifier.height(DXPaddings.small))
-                    aqiIAQIDetailsCard.AQIDetailsCard(aqiData = state.aqiData)
+                    aqiIAQIDetailsCard.AQIDetailsCard(
+                        aqiData = state.aqiData
+                    ) {
+
+                    }
                 }
             }
         }
@@ -100,7 +104,7 @@ private fun HomeScreenPreview() = HomeScreen(
         aqiData = AirQualityData(),
         isLoading = false
     ),
-    aqiIAQIDetailsCard = {
+    aqiIAQIDetailsCard = { _, _ ->
         Box(
             modifier = Modifier
                 .fillMaxWidth()

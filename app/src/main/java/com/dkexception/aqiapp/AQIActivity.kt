@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.dkexception.aqiapp.content.AQIContent
+import com.dkexception.aqiapp.content.AQIAppContent
 import com.dkexception.core.navigation.NavigationManager
 import com.dkexception.ui.background.DXSurface
 import com.dkexception.ui.system.SetSystemBarColors
@@ -39,7 +39,7 @@ class AQIActivity : ComponentActivity() {
 
             DXTheme {
                 DXSurface(Modifier.fillMaxSize()) {
-                    AQIContent(controller = mainNavController)
+                    AQIAppContent(controller = mainNavController)
                 }
             }
         }

@@ -6,5 +6,8 @@ import com.dkexception.aqiapp.feature.aqisdk.model.AirQualityData
 fun interface IAQIDetailsCard {
 
     @Composable
-    fun AQIDetailsCard(aqiData: AirQualityData)
+    fun AQIDetailsCard(
+        aqiData: AirQualityData,
+        onCardClicked: () -> Unit
+    )
 }

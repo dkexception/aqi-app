@@ -57,7 +57,11 @@ object DXColors {
         }
 
     val aqiLevel: AQILevel
-        @Composable @ReadOnlyComposable get() = AQILevel.Default
+        @Composable @ReadOnlyComposable get() = if (isSystemInDarkTheme()) {
+            AQILevel.Dark
+        } else {
+            AQILevel.Light
+        }
 }
 
 sealed class Primary(
@@ -193,13 +197,23 @@ sealed class AQILevel(
     val unknown: Color,
 ) {
 
-    data object Default : AQILevel(
-        good = Color(0xFFCCFFCC),
-        moderate = Color(0xFFE0F8E0),
-        bad = Color(0xFFFFDAB9),
-        poor = Color(0xFFFFA07A),
+    data object Light : AQILevel(
+        good = Color(0xFFF0FFF0),
+        moderate = Color(0xFFF5FFF5),
+        bad = Color(0xFFFFE4B5),
+        poor = Color(0xFFF08080),
         unhealthy = Color(0xFFE6E6FA),
-        hazardous = Color(0xFFFFCCCC),
+        hazardous = Color(0xFFFFD1DC),
+        unknown = Color.White
+    )
+
+    data object Dark : AQILevel(
+        good = Color(0xFF556B2F),
+        moderate = Color(0xFF698B69),
+        bad = Color(0xFFFFDAB9),
+        poor = Color(0xFFF08080),
+        unhealthy = Color(0xFFE6E6FA),
+        hazardous = Color(0xFFFFD1DC),
         unknown = Color.White
     )
 }

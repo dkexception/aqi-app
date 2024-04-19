@@ -4,5 +4,6 @@ data class MapData(
     val focusedLat: Double? = null,
     val focusedLng: Double? = null,
     val zoomLevel: Float? = null,
-    val allowScrolling: Boolean = true
+    val allowScrolling: Boolean = true,
+    val onMapClicked: () -> Unit
 )
