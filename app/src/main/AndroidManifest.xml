@@ -20,6 +20,10 @@
         android:theme="@style/Theme.AQIApp"
         tools:targetApi="tiramisu">
 
+        <meta-data
+            android:name="com.google.android.gms.car.application"
+            android:resource="@xml/automotive_app_desc" />
+
         <activity
             android:name=".AQIActivity"
             android:exported="true"

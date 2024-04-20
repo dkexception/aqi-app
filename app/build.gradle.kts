@@ -34,6 +34,7 @@ dependencies {
 
     // Common
     api(projects.ui)
+    implementation(projects.carApp)
 
     // Modules
     api(projects.feature.onboarding)
