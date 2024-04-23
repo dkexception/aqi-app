@@ -3,6 +3,8 @@ package com.dkexception.aqiapp.feature.more.list
 sealed class MoreListEvent {
 
     data class OnItemClicked(val item: MoreListItem) : MoreListEvent()
+
+    data class OnConfirmLogoutPopupAction(val isConfirm: Boolean) : MoreListEvent()
 }
 
 enum class MoreListItem {

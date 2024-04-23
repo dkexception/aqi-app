@@ -21,6 +21,7 @@ internal fun AirQualityResponse.toAirQualityData(
     val weatherIconUrl = "https://airvisual.com/images/$weatherIcon.png"
 
     return AirQualityData(
+        isDefault = false,
         isFromIPLocation = isFromIPLocation,
         chinaLevel = aqiLevelAsPerChina.toAQILevel(),
         americaLevel = aqiLevelAsPerAmerica.toAQILevel(),

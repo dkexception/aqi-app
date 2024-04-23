@@ -30,8 +30,6 @@ import com.dkexception.aqiapp.feature.aqidetails.R
 import com.dkexception.aqiapp.feature.aqidetails.contract.IAQIDetailsCard
 import com.dkexception.aqiapp.feature.aqisdk.model.AQILevel
 import com.dkexception.aqiapp.feature.aqisdk.model.AirQualityData
-import com.dkexception.aqiapp.feature.aqisdk.model.PollutionData
-import com.dkexception.aqiapp.feature.aqisdk.model.WeatherData
 import com.dkexception.ui.cards.DXCard
 import com.dkexception.ui.images.DXNetworkImage
 import com.dkexception.ui.maps.IMapView
@@ -294,31 +292,7 @@ private fun AQIScaleColorScheme() = Column(Modifier.fillMaxSize()) {
 @PreviewLightDark
 @Composable
 private fun AQIDetailsIPLocationCardPreview() = AQIDetailsCardContent(
-    aqiData = AirQualityData(
-        isFromIPLocation = true,
-        chinaLevel = AQILevel.MODERATE,
-        americaLevel = AQILevel.GOOD,
-        city = "Pune",
-        state = "Maharashtra",
-        country = "India",
-        latLng = 18.64 to 73.84,
-        pollutionData = PollutionData(
-            aqiChinaMEP = 80,
-            mainPollutantChina = "p2",
-            aqiAmericaEPA = 153,
-            mainPollutantAmerica = "p2",
-            timestamp = "2024-04-12T07:00:00.000Z"
-        ),
-        weatherData = WeatherData(
-            humidityPercent = 21.0,
-            weatherIconUrl = "https://airvisual.com/images/04d.png",
-            pressureHPA = 1010.0,
-            temperature = 35.0,
-            windDirectionAngle = 160.0,
-            windSpeedMPS = 3.03,
-            timestamp = "2024-04-12T08:00:00.000Z"
-        )
-    ),
+    aqiData = AirQualityData.PREVIEW_DATA,
     mMapView = object : IMapView {
         @Composable
         override fun DefaultMapView(mapData: MapData, modifier: Modifier) {
@@ -337,31 +311,7 @@ private fun AQIDetailsIPLocationCardPreview() = AQIDetailsCardContent(
 @Preview
 @Composable
 private fun AQIDetailsGPSCardPreview() = AQIDetailsCardContent(
-    aqiData = AirQualityData(
-        isFromIPLocation = false,
-        chinaLevel = AQILevel.HAZARDOUS,
-        americaLevel = AQILevel.BAD,
-        city = "Pune",
-        state = "Maharashtra",
-        country = "India",
-        latLng = 18.64 to 73.84,
-        pollutionData = PollutionData(
-            aqiChinaMEP = 80,
-            mainPollutantChina = "p2",
-            aqiAmericaEPA = 153,
-            mainPollutantAmerica = "p2",
-            timestamp = "2024-04-12T09:00:00.000Z"
-        ),
-        weatherData = WeatherData(
-            humidityPercent = 21.0,
-            weatherIconUrl = "https://airvisual.com/images/04d.png",
-            pressureHPA = 1010.0,
-            temperature = 35.0,
-            windDirectionAngle = 160.0,
-            windSpeedMPS = 3.03,
-            timestamp = "2024-04-12T10:00:00.000Z"
-        )
-    ),
+    aqiData = AirQualityData.PREVIEW_DATA,
     mMapView = object : IMapView {
         @Composable
         override fun DefaultMapView(mapData: MapData, modifier: Modifier) {

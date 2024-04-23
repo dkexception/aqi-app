@@ -2,8 +2,6 @@ package com.dkexception.core.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKeys
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,11 +17,8 @@ object DataStoreModule {
     @Provides
     fun provideEncryptedSharedPreferences(
         @ApplicationContext context: Context
-    ): SharedPreferences = EncryptedSharedPreferences.create(
+    ): SharedPreferences = context.getSharedPreferences(
         "aqi-app-prefs",
-        MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC),
-        context,
-        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        Context.MODE_PRIVATE
     )
 }

@@ -88,7 +88,7 @@ private fun HomeScreenContent(
                     aqiIAQIDetailsCard.AQIDetailsCard(
                         aqiData = state.aqiData
                     ) {
-
+                        onEvent(HomeEvent.OnAQICardClicked)
                     }
                 }
             }

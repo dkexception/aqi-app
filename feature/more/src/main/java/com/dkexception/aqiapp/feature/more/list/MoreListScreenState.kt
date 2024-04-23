@@ -8,5 +8,7 @@ data class MoreListScreenState(
 
     val appName: String = "",
 
-    val appVersion: String = ""
+    val appVersion: String = "",
+
+    val isConfirmLogoutPopupVisible: Boolean = false
 )

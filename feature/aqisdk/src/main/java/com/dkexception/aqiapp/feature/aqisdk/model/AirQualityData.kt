@@ -2,6 +2,8 @@ package com.dkexception.aqiapp.feature.aqisdk.model
 
 data class AirQualityData(
 
+    val isDefault: Boolean = true,
+
     val isFromIPLocation: Boolean = true,
 
     val chinaLevel: AQILevel = AQILevel.UNKNOWN,
@@ -15,7 +17,37 @@ data class AirQualityData(
 
     val pollutionData: PollutionData = PollutionData(),
     val weatherData: WeatherData = WeatherData()
-)
+) {
+
+    companion object {
+
+        val PREVIEW_DATA = AirQualityData(
+            isFromIPLocation = true,
+            chinaLevel = AQILevel.MODERATE,
+            americaLevel = AQILevel.GOOD,
+            city = "Pune",
+            state = "Maharashtra",
+            country = "India",
+            latLng = 18.64 to 73.84,
+            pollutionData = PollutionData(
+                aqiChinaMEP = 80,
+                mainPollutantChina = "p2",
+                aqiAmericaEPA = 153,
+                mainPollutantAmerica = "p2",
+                timestamp = "2024-04-12T07:00:00.000Z"
+            ),
+            weatherData = WeatherData(
+                humidityPercent = 21.0,
+                weatherIconUrl = "https://airvisual.com/images/04d.png",
+                pressureHPA = 1010.0,
+                temperature = 35.0,
+                windDirectionAngle = 160.0,
+                windSpeedMPS = 3.03,
+                timestamp = "2024-04-12T08:00:00.000Z"
+            )
+        )
+    }
+}
 
 enum class AQILevel {
 

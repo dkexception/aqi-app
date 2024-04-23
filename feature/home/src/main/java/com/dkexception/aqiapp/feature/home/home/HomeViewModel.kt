@@ -5,8 +5,8 @@ import com.dkexception.aqiapp.feature.aqidetails.contract.IAQIDetailsCard
 import com.dkexception.aqiapp.feature.aqisdk.contract.IAirVisualDataManager
 import com.dkexception.core.DataStore
 import com.dkexception.core.base.mvi.BaseViewModel
-import com.dkexception.core.model.TaskResult
 import com.dkexception.core.model.profile.AuthUserData
+import com.dkexception.core.navigation.NavRoute
 import com.dkexception.core.utils.Constants
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val dataStore: DataStore,
+    dataStore: DataStore,
     val aqiIAQIDetailsCard: IAQIDetailsCard,
     private val manager: IAirVisualDataManager
 ) : BaseViewModel<HomeEvent>() {
@@ -45,38 +45,32 @@ class HomeViewModel @Inject constructor(
     val state: StateFlow<HomeScreenState> get() = _state.asStateFlow()
 
     init {
-        getAndUpdateIPLocationAQIData()
+        setUpSDK()
     }
 
     override fun onEvent(event: HomeEvent) {
         when (event) {
-            HomeEvent.OnPulledToRefresh -> getAndUpdateIPLocationAQIData()
+            HomeEvent.OnPulledToRefresh -> manager.getDataByIPLocation()
+            HomeEvent.OnAQICardClicked -> {
+                navigationManager.navigate(
+                    "${NavRoute.DETAILS.AQI_DETAILS}?shouldUseIPLocation=${state.value.aqiData?.isFromIPLocation ?: true}"
+                )
+            }
         }
     }
 
-    private fun getAndUpdateIPLocationAQIData() = viewModelScope.launch {
+    private fun setUpSDK() = viewModelScope.launch {
 
-        _state.update {
-            it.copy(
-                isLoading = true
-            )
-        }
+        manager.initialise()
+        manager.getDataByIPLocation()
+        manager.ipLocationData.collect { (isLoading, aqiData) ->
 
-        when (val aqiDataResult = manager.getDataByIPLocation()) {
-            is TaskResult.Error -> Unit
-            is TaskResult.Success -> {
-                _state.update {
-                    it.copy(
-                        aqiData = aqiDataResult.data
-                    )
-                }
+            _state.update {
+                it.copy(
+                    isLoading = isLoading,
+                    aqiData = aqiData
+                )
             }
-        }
-
-        _state.update {
-            it.copy(
-                isLoading = false
-            )
         }
     }
 }

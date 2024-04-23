@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import com.dkexception.aqiapp.feature.more.R
 import com.dkexception.core.model.UIText
 import com.dkexception.ui.cards.DXCard
+import com.dkexception.ui.dialogs.DXAlertDialog
 import com.dkexception.ui.dividers.DXDivider
 import com.dkexception.ui.images.DXIllustration
 import com.dkexception.ui.theme.DXColors
@@ -51,163 +52,183 @@ fun MoreListScreen(
 private fun MoreListScreenContent(
     state: MoreListScreenState,
     onEvent: (MoreListEvent) -> Unit
-) = Box(
-    modifier = Modifier
-        .fillMaxSize()
-        .background(DXColors.screenBackground.secondary),
-    contentAlignment = Alignment.Center
 ) {
 
-    DXIllustration(
-        illustration = R.drawable.ill_more_bg,
-        modifier = Modifier
-            .fillMaxWidth()
-            .align(Alignment.TopCenter),
-        optionalContentScale = ContentScale.FillWidth
-    )
+    if (state.isConfirmLogoutPopupVisible) {
+        DXAlertDialog(
+            title = "Log out?",
+            optionalSubtitle = "Logging out from the app will clear all your saved locations and data.",
+            primaryButtonTextToActionPair = "Confirm" to {
+                onEvent(MoreListEvent.OnConfirmLogoutPopupAction(true))
+            },
+            optionalSecondaryButtonTextToActionPair = "Cancel" to {
+                onEvent(MoreListEvent.OnConfirmLogoutPopupAction(false))
+            }
+        ) { }
+    }
 
-    LazyColumn(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .safeDrawingPadding(),
-        contentPadding = PaddingValues(
-            top = LocalConfiguration.current.screenHeightDp.dp * .13f,
-            end = DXPaddings.large,
-            bottom = DXPaddings.large,
-            start = DXPaddings.large
-        ),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .background(DXColors.screenBackground.secondary),
+        contentAlignment = Alignment.Center
     ) {
 
-        item {
-            Box(
-                modifier = Modifier
-                    .clip(CircleShape)
-                    .background(DXColors.accent.light),
-                contentAlignment = Alignment.Center
-            ) {
-                Image(
-                    painter = painterResource(id = UIDrawables.app_icon),
-                    contentDescription = null
-                )
-            }
+        DXIllustration(
+            illustration = R.drawable.ill_more_bg,
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.TopCenter),
+            optionalContentScale = ContentScale.FillWidth
+        )
 
-            Spacer(modifier = Modifier.height(10.dp))
-        }
-
-        item {
-            Text(
-                text = state.userName,
-                color = DXColors.text.dark,
-                style = headline2()
-            )
-
-            Spacer(modifier = Modifier.height(DXPaddings.small))
-
-            Text(
-                text = state.emailId,
-                color = DXColors.text.light,
-                style = regular()
-            )
-
-            Spacer(modifier = Modifier.height(DXPaddings.default))
-
-            DXDivider(Modifier.fillMaxWidth())
-
-            Spacer(modifier = Modifier.height(DXPaddings.default))
-        }
-
-        items(
-            listOf(
-                Triple(
-                    UIDrawables.ic_profile,
-                    UIText.DynamicString("Profile"),
-                    MoreListItem.PROFILE
-                ),
-                Triple(
-                    UIDrawables.ic_location,
-                    UIText.DynamicString("Saved Locations"),
-                    MoreListItem.SAVED_LOCATIONS
-                ),
-                Triple(UIDrawables.ic_faq, UIText.DynamicString("FAQ"), MoreListItem.FAQ)
-            )
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .safeDrawingPadding(),
+            contentPadding = PaddingValues(
+                top = LocalConfiguration.current.screenHeightDp.dp * .13f,
+                end = DXPaddings.large,
+                bottom = DXPaddings.large,
+                start = DXPaddings.large
+            ),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            MoreItemRow(
-                icon = it.first,
-                name = it.second
-            ) {
-                onEvent(MoreListEvent.OnItemClicked(it.third))
+            item {
+                Box(
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .background(DXColors.accent.light),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Image(
+                        painter = painterResource(id = UIDrawables.app_icon),
+                        contentDescription = null
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
             }
 
-            Spacer(modifier = Modifier.height(DXPaddings.small))
-        }
-
-        item {
-            Spacer(modifier = Modifier.height(DXPaddings.default))
-
-            DXDivider(Modifier.fillMaxWidth())
-
-            Spacer(modifier = Modifier.height(DXPaddings.default))
-        }
-
-        items(
-            listOf(
-                Triple(
-                    UIDrawables.ic_settings,
-                    UIText.DynamicString("Settings"),
-                    MoreListItem.SETTINGS
-                ),
-                Triple(
-                    UIDrawables.ic_about_us,
-                    UIText.DynamicString("About Us"),
-                    MoreListItem.ABOUT_US
-                ),
-                Triple(
-                    UIDrawables.ic_contact_us,
-                    UIText.DynamicString("Contact Us"),
-                    MoreListItem.CONTACT_US
-                ),
-                Triple(UIDrawables.ic_logout, UIText.DynamicString("Logout"), MoreListItem.LOGOUT)
-            )
-        ) {
-
-            MoreItemRow(
-                icon = it.first,
-                name = it.second
-            ) {
-                onEvent(MoreListEvent.OnItemClicked(it.third))
-            }
-
-            Spacer(modifier = Modifier.height(DXPaddings.small))
-        }
-
-        item {
-            Spacer(modifier = Modifier.height(DXPaddings.default))
-
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-
+            item {
                 Text(
-                    text = state.appName,
-                    style = headline2(),
-                    color = DXColors.text.dark
+                    text = state.userName,
+                    color = DXColors.text.dark,
+                    style = headline2()
                 )
 
                 Spacer(modifier = Modifier.height(DXPaddings.small))
 
                 Text(
-                    text = "App Version ${state.appVersion}",
-                    style = regular(),
-                    color = DXColors.text.light
+                    text = state.emailId,
+                    color = DXColors.text.light,
+                    style = regular()
                 )
+
+                Spacer(modifier = Modifier.height(DXPaddings.default))
+
+                DXDivider(Modifier.fillMaxWidth())
+
+                Spacer(modifier = Modifier.height(DXPaddings.default))
+            }
+
+            items(
+                listOf(
+                    Triple(
+                        UIDrawables.ic_profile,
+                        UIText.DynamicString("Profile"),
+                        MoreListItem.PROFILE
+                    ),
+                    Triple(
+                        UIDrawables.ic_location,
+                        UIText.DynamicString("Saved Locations"),
+                        MoreListItem.SAVED_LOCATIONS
+                    ),
+                    Triple(UIDrawables.ic_faq, UIText.DynamicString("FAQ"), MoreListItem.FAQ)
+                )
+            ) {
+
+                MoreItemRow(
+                    icon = it.first,
+                    name = it.second
+                ) {
+                    onEvent(MoreListEvent.OnItemClicked(it.third))
+                }
+
+                Spacer(modifier = Modifier.height(DXPaddings.small))
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(DXPaddings.default))
+
+                DXDivider(Modifier.fillMaxWidth())
+
+                Spacer(modifier = Modifier.height(DXPaddings.default))
+            }
+
+            items(
+                listOf(
+                    Triple(
+                        UIDrawables.ic_settings,
+                        UIText.DynamicString("Settings"),
+                        MoreListItem.SETTINGS
+                    ),
+                    Triple(
+                        UIDrawables.ic_about_us,
+                        UIText.DynamicString("About Us"),
+                        MoreListItem.ABOUT_US
+                    ),
+                    Triple(
+                        UIDrawables.ic_contact_us,
+                        UIText.DynamicString("Contact Us"),
+                        MoreListItem.CONTACT_US
+                    ),
+                    Triple(
+                        UIDrawables.ic_logout,
+                        UIText.DynamicString("Logout"),
+                        MoreListItem.LOGOUT
+                    )
+                )
+            ) {
+
+                MoreItemRow(
+                    icon = it.first,
+                    name = it.second
+                ) {
+                    onEvent(MoreListEvent.OnItemClicked(it.third))
+                }
+
+                Spacer(modifier = Modifier.height(DXPaddings.small))
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(DXPaddings.default))
+
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+
+                    Text(
+                        text = state.appName,
+                        style = headline2(),
+                        color = DXColors.text.dark
+                    )
+
+                    Spacer(modifier = Modifier.height(DXPaddings.small))
+
+                    Text(
+                        text = "App Version ${state.appVersion}",
+                        style = regular(),
+                        color = DXColors.text.light
+                    )
+                }
             }
         }
-    }
 
-    Spacer(modifier = Modifier.height(DXPaddings.default))
+        Spacer(modifier = Modifier.height(DXPaddings.default))
+    }
 }
 
 @Composable
@@ -262,5 +283,17 @@ private fun MoreListScreenPreview() = MoreListScreen(
         emailId = "dkexception@gmail.com",
         appName = "AQI App",
         appVersion = "1.0"
+    )
+) { }
+
+@Preview
+@Composable
+private fun MoreListScreenLogoutPreview() = MoreListScreen(
+    state = MoreListScreenState(
+        userName = "Dhanesh Katre",
+        emailId = "dkexception@gmail.com",
+        appName = "AQI App",
+        appVersion = "1.0",
+        isConfirmLogoutPopupVisible = true
     )
 ) { }

@@ -34,7 +34,4 @@ dependencies {
     implementation(libs.gson.converter)
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging.interceptor)
-
-    // Encrypted Shared Prefs
-    implementation(libs.androidx.security.crypto)
 }

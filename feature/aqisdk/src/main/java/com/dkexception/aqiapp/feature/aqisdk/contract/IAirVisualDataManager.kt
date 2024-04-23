@@ -7,11 +7,19 @@ import kotlinx.coroutines.flow.StateFlow
 
 interface IAirVisualDataManager {
 
-    val state: StateFlow<Boolean>
+    val ipLocationData: StateFlow<Pair<Boolean, AirQualityData>>
 
-    fun initialise()
+    val currentLocationData: StateFlow<Pair<Boolean, AirQualityData>>
 
-    suspend fun getDataByIPLocation(): TaskResult<AirQualityData, AirVisualAPIError>
+    suspend fun initialise()
+
+    fun getDataByIPLocation()
+
+    fun getDataByCurrentGeoLocation()
+
+    suspend fun getDataByIPAddress(
+        ipAddress: String
+    ): TaskResult<AirQualityData, AirVisualAPIError>
 
     suspend fun getDataByLocation(
         lat: Double,

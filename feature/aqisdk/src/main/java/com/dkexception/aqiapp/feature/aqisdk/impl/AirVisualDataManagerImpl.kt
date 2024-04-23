@@ -25,23 +25,55 @@ internal class AirVisualDataManagerImpl @Inject constructor(
 
     private var countries: List<String> = listOf()
 
-    private val _state: MutableStateFlow<Boolean> = MutableStateFlow(false)
-    override val state: StateFlow<Boolean> get() = _state
+    private val _ipLocationData: MutableStateFlow<Pair<Boolean, AirQualityData>> =
+        MutableStateFlow(false to AirQualityData())
+    override val ipLocationData: StateFlow<Pair<Boolean, AirQualityData>> get() = _ipLocationData
 
-    override fun initialise() {
+    private val _currentLocationData: MutableStateFlow<Pair<Boolean, AirQualityData>> =
+        MutableStateFlow(false to AirQualityData())
+    override val currentLocationData: StateFlow<Pair<Boolean, AirQualityData>> get() = _currentLocationData
 
-        _state.update { true }
+    override suspend fun initialise() {
+        countries = repository.getAllCountries()
+    }
+
+    override fun getDataByIPLocation() {
+
+        _ipLocationData.update {
+            it.copy(first = true)
+        }
 
         scope.launch {
+            when (val result = repository.getAQIDataByIPLocation()) {
+                is TaskResult.Error -> Unit
+                is TaskResult.Success -> {
+                    _ipLocationData.update { false to result.data }
+                }
+            }
 
-            countries = repository.getAllCountries()
-
-            _state.update { false }
+            _ipLocationData.update {
+                it.copy(first = false)
+            }
         }
     }
 
-    override suspend fun getDataByIPLocation(): TaskResult<AirQualityData, AirVisualAPIError> =
-        repository.getAQIDataByIPLocation()
+    override fun getDataByCurrentGeoLocation() {
+
+        _currentLocationData.update {
+            it.copy(first = true)
+        }
+
+        scope.launch {
+
+            _currentLocationData.update {
+                it.copy(first = false)
+            }
+        }
+    }
+
+    override suspend fun getDataByIPAddress(ipAddress: String): TaskResult<AirQualityData, AirVisualAPIError> {
+        TODO("Not yet implemented")
+    }
 
     override suspend fun getDataByLocation(
         lat: Double,
